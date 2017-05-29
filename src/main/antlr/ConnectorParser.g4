@@ -52,7 +52,7 @@ topic_name
    ;
 
 table_name
-   : TABLENAME
+   : ID | TOPICNAME
    ;
 
 column_name
