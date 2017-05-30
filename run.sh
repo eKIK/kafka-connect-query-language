@@ -402,7 +402,7 @@ export GIT_ASKPASS=echo
 
 travis_fold start git.checkout
   if [[ ! -d eKIK/kafka-connect-query-language/.git ]]; then
-    travis_cmd git\ clone\ --depth\=50\ --branch\=\'master\'\ https://github.com/eKIK/kafka-connect-query-language.git\ eKIK/kafka-connect-query-language --assert --echo --retry --timing
+    travis_cmd git\ clone\ --depth\=50\ --branch\=\'\'\ https://github.com/eKIK/kafka-connect-query-language.git\ eKIK/kafka-connect-query-language --assert --echo --retry --timing
     if [[ $? -ne 0 ]]; then
       echo -e "\033[31;1mFailed to clone from GitHub.\033[0m"
       echo -e "Checking GitHub status (https://status.github.com/api/last-message.json):"
@@ -559,7 +559,7 @@ travis_fold end before_script
 EOFUNC_BEFORE_SCRIPT
 cat <<'EOFUNC_SCRIPT' >>$HOME/.travis/job_stages
 function travis_run_script() {
-travis_cmd ./gradlew\ fatJar --echo --timing
+travis_cmd ./gradlew\ build\ -x\ signArchives --echo --timing
 travis_result $?
 :
 }
